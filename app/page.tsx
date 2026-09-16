@@ -7,13 +7,11 @@ const PHOTO_SRC = '/vetha.jpg'
 const messageLines = [
   'Vetha 💜...',
   'Direct-ah birthday wish pannalam nu nenachen...',
-  'Aana, oru normal “Happy Birthday” message anupuradha vida,',
-  'konjam different-ah wish pannalam nu thonuchu. 🤍',
+  'Aana, oru normal “Happy Birthday” message anupuradha vida,\nkonjam different-ah wish pannalam nu thonuchu. 🤍',
   'So... indha chinna surprise unakkaga.',
-  'Eppovume happy-ah iru,',
-  'sirichite iru. 🤍',
-  'Innaiku un day... so just vibe, smile, and enjoy! 😌',
-  'And yes... birthday treat pending, madam! 😂',
+  'Eppovume happy-ah iru,\nsirichite iru. 🤍',
+  'Innaiku un day...\nso just vibe, smile, and enjoy! 😌',
+  'And yes...\nbirthday treat pending, madam! 😂',
 ]
 
 function ParticleField() {
@@ -69,8 +67,8 @@ export default function Page() {
 
   return <main className={`birthday-app scene-${scene}`}>
     <ParticleField /><Fireworks active={scene === 'finale'} />
-    {scene === 'intro' && <section className="scene-content intro-content"><div className="intro-lines"><p>Vetha…</p><p>Idhu just oru birthday wish illa. 👀</p><p>Konjam different-ah try panniruken.</p></div><button className="outline-button" onClick={() => setScene('message')}>See what&apos;s inside <span aria-hidden="true">→</span></button></section>}
-    {scene === 'message' && <section className="scene-content message-content"><div className="personal-message" aria-live="polite">{messageLines.map((text, index) => <p key={text} className={index < line ? 'visible' : ''}>{text}</p>)}</div>{line >= messageLines.length && <button className="text-button" onClick={() => setScene('card')}>Continue <span aria-hidden="true">↓</span></button>}</section>}
+    {scene === 'intro' && <section className="scene-content intro-content"><div className="intro-lines"><p>Oiii madam 👀</p><p>Ready ah? <span aria-hidden="true">→</span></p></div><button className="outline-button" onClick={() => setScene('message')}>Ready ah? <span aria-hidden="true">→</span></button></section>}
+    {scene === 'message' && <section className="scene-content message-content"><div className="personal-message" aria-live="polite">{messageLines.map((text, index) => <p key={text} className={index < line ? 'visible' : ''}>{text.split('\n').map((part, partIndex) => <span key={`${text}-${partIndex}`}>{part}{partIndex < text.split('\n').length - 1 && <br />}</span>)}</p>)}</div>{line >= messageLines.length && <button className="text-button" onClick={() => setScene('card')}>Continue <span aria-hidden="true">↓</span></button>}</section>}
     {scene === 'card' && <section className="scene-content card-content"><p className="eyebrow">A small reminder</p><button className={`flip-card ${flipped ? 'is-flipped' : ''}`} onClick={() => setFlipped((value) => !value)} aria-label={flipped ? 'Show front of card' : 'Flip card to read the message'}><span className="card-face card-front"><span className="card-mark">V</span><span>Oru chinna reminder... 👀</span></span><span className="card-face card-back"><span>“Idha paathu oru chinna smile vandha podhum. 👀🤍”</span></span></button>{flipped && <button className="text-button" onClick={() => setScene('reveal')}>Continue <span aria-hidden="true">→</span></button>}</section>}
     {scene === 'reveal' && <section className="scene-content reveal-content"><div className={`portrait-wrap ${photoReady ? 'is-ready' : ''}`}><div className="portrait-glow" /><img src={PHOTO_SRC} alt="Vetha" className="portrait" /></div><p className="reveal-message">Simplicity-ku ivlo azhaga irukka mudiyuma? 😌</p><button className="text-button" onClick={() => setScene('countdown')}>Continue <span aria-hidden="true">→</span></button></section>}
     {scene === 'countdown' && <section className="scene-content countdown-content" aria-live="assertive"><div className="count-number" key={count}>{count}</div></section>}
