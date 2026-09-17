@@ -11,7 +11,6 @@ const messageLines = [
   'So... indha chinna surprise unakkaga.',
   'Eppovume happy-ah iru,\nsirichite iru. 🤍',
   'Innaiku un day...\nso just vibe, smile, and enjoy! 😌',
-  'And yes...\nbirthday treat pending, madam! 😂',
 ]
 
 function ParticleField() {
