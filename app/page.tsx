@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 type Scene = 'intro' | 'message' | 'card' | 'reveal' | 'countdown' | 'finale'
-const PHOTO_SRC = '/vetha.jpg'
+const PHOTO_SRC = '/vetha1.jpeg'
 const messageLines = [
   'Vetha 💜...',
   'Direct-ah birthday wish pannalam nu nenachen...',
